@@ -1,3 +1,3 @@
-<header>
-    Sono il footer
-</header>
+<footer>
+    -- Developed by Peppa Pig --
+</footer>

@@ -91,7 +91,7 @@ class DressController extends Controller
             ];
             return view('dresses.show', $data);
         }
-        abort(404); 
+        abort(404); //Perché non funziona?
     }
 
     /**

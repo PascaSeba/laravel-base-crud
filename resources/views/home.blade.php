@@ -4,9 +4,10 @@
 
 @section('content')
 
-<h1>La mia homepage</h1>
-<a href="{{ route('vestiti.index') }}">CLICCA QUI PER I VESTITI</a>
-<br>
-<br>
+<div class="homepage">
+    <h1>HOMEPAGE</h1>
+    <p>Clicca sul seguente bottone per visualizzare i vestiti:</p>
+    <button><a href="{{ route('vestiti.index') }}">VISUALIZZA I VESTITI</a></button>
+</div>
 
 @endsection
