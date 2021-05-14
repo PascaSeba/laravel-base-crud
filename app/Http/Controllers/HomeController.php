@@ -15,7 +15,7 @@ class HomeController extends Controller
         return view('contacts');
     }
 
-    public function dresses() {
+   /*  public function dresses() {
 
         $dresses = Dress::all();
 
@@ -24,5 +24,5 @@ class HomeController extends Controller
         ];
 
         return view('dresses', $data);
-    }
+    } */
 }

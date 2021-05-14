@@ -5,6 +5,7 @@
 @section('content')
 
 <h1>Lista dei nostri vestiti</h1>
+<a href="{{ route('vestiti.create') }}">Clicca qui per inserire un nuovo vestito</a>
 @foreach ($vestiti as $vestito)
     <h2>Vestito n° {{ $vestito['id'] }}</h2>
     <p><strong>Nome vestito: </strong> {{ $vestito['name'] }}</p>

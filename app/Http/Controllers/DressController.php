@@ -30,7 +30,7 @@ class DressController extends Controller
      */
     public function create()
     {
-        //
+        return view('dresses.create');
     }
 
     /**
@@ -41,7 +41,35 @@ class DressController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // a questo punto mi salvo i dati della request nel form (riga 45)
+        $data = $request -> all();
+
+        //METODOLOGIA 1 - PER PASSARE I DATI DEL FORM
+        /* $new_dress = new Dress();
+
+        $new_dress->name = $data['name'];
+        $new_dress->color = $data['color'];
+        $new_dress->size = $data['size'];
+        $new_dress->description = $data['description'];
+        $new_dress->price = $data['price'];
+
+            //A questo punto ci si definisce un metodo, proprio per salvare:
+        $new_dress->save();
+
+            //Come faccio a rimuoverlo senza che mi faccia una copia e a rimandare l'utente al suo vestito?
+            //in questo modo mi fa ritornare alla pagine dei vestiti e posso visualizzare quindi il vestito appena creato
+            return redirect()->route('vestiti.index'); */
+        //FINE METODOLOGIA 1
+
+        //METODOLOGIA 2 - PER PASSARE I DATI DEL FORM
+        /* Controllare il Dress.php perché bisogna aggiungere il fill anche di là */
+
+        $new_dress = new Dress();
+        $new_dress->fill($data);
+        $new_dress->save(); // N.B: l'id viene assegnato solo dopo che ho effettuato questa operazione, ovvero il salvataggio, e così anche per il timestamp
+
+        return redirect()->route('vestiti.index');
+        
     }
 
     /**
@@ -50,13 +78,13 @@ class DressController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) //E se io tolgo l'id dalle parentesiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii? A cosa serve nelle parentesi l'id?
+    public function show($id) //E se io tolgo l'id dalle parentesi? A cosa serve nelle parentesi l'id?
     {
-        $data = Dress::find($id);  //Perché diamo $data? Comunque questo serve per cercare lo specifico id in questo contesto di documento.
+        $data = Dress::find($id);  //Questo serve per trovare lo specifico id, ma non potevo trovarlo anche senza?
 
-        if($id) { //ovvero: SE esiste $id, allora fammi questo... (iin questo caso mi ritorna il mio vestito, ma solo perché ho chiamato riga 55)
+        if($id) { //ovvero: SE esiste $id, allora fammi questo... (in questo caso mi ritorna il mio vestito, ma solo perché ho chiamato a riga 55)
             
-            $vestito = Dress::find($id);
+            $vestito = Dress::find($id); //SELECT id FROM dress WHERE 
 
             $data = [
                 'vestito' => $vestito
