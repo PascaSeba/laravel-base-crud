@@ -273,6 +273,24 @@ form button:hover {
     margin-bottom: 15px;
 }
 
+.form_container {
+    margin-top: 150px;
+    margin-bottom: 250px;
+}
+
+.require {
+    margin-top: 100px;
+    margin-bottom: 50px;
+    color: red;
+    border-radius: 15px;
+    font-size: 0.7em;
+}
+
+.edit_title {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
 
 /* FOOTER */
 

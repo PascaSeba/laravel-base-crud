@@ -3,11 +3,11 @@
 @section('title', 'Inserimento nuovo vestito')
 
 @section('content')
-    <div class="form_container">
+    <div class="form_container edit">
         <form action="{{route('vestiti.update', $vestiti->id)}}" method="post">
             @csrf
             @method('PUT')
-            <h1>EDIT SECTION</h1>
+            <h1 class="edit_title">EDIT SECTION</h1>
             <div class="form-group">
             <label for="name">NOME: </label>
             <input type="text" name="name" id="name" value="{{$vestiti->name}}">
