@@ -190,14 +190,14 @@ header {
 }
 
 .details {
-    color: black;
+    color: rgb(44, 73, 117);
     text-decoration: none;
     font-weight: bold;
     font-size: 2em;
 }
 
 .details:hover {
-    color: rgb(62, 18, 104);
+    color: rgb(119, 40, 194);
     text-decoration: underline;
 }
 
@@ -215,7 +215,7 @@ header {
     color: rgb(99, 96, 96);
 }
 
-form {
+form:first-child {
     width: 50%;
     padding: 30px;
     display: flex;
@@ -263,6 +263,14 @@ form button {
 form button:hover {
     background-color: rgb(236, 208, 208);
     color: black;
+}
+
+.delete {
+    background-color: rgb(69, 127, 138);
+    width: 250px;
+    border-color: rgb(53, 20, 63);
+    margin-top: 5px;
+    margin-bottom: 15px;
 }
 
 

@@ -44,6 +44,15 @@ class DressController extends Controller
         // a questo punto mi salvo i dati della request nel form (riga 45)
         $data = $request -> all();
 
+        $request->validate([
+            'name' => 'required|unique:dresses|max:255',
+            'color' => 'required|max:20',
+            'size' => 'required|max:4',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'season' => 'required'
+        ]);
+
         //METODOLOGIA 1 - PER PASSARE I DATI DEL FORM
         /* $new_dress = new Dress();
 
@@ -100,9 +109,16 @@ class DressController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Dress $vestiti)
     {
         //
+        //primo metodo: 
+        //$dress_to_update = Dress::findOrFail($id); //è un find, la differenza con l'altro è che se
+                                                    //non esiste mi ritorna un errore
+        
+        //Secondo metodo: molto più corto, a riga 112 nella parentesi non serve inserire l'id ma solo quell'istanza e poi usarla
+        //@dd($vestiti);
+        return view('dresses.edit', compact('vestiti'));
     }
 
     /**
@@ -112,9 +128,12 @@ class DressController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Dress $vestiti)
     {
         //
+        $data = $request -> all();
+        $vestiti->update($data);
+        return redirect()->route('vestiti.index');
     }
 
     /**
@@ -123,8 +142,10 @@ class DressController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Dress $vestiti)
     {
         //
+        $vestiti->delete();
+        return redirect()->route('vestiti.index');
     }
 }
